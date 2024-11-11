@@ -4,7 +4,7 @@ print("Hello, GitHub!")
 
 x = 5
 y = 10
-print(x + y)
+print(x + y) #Сложение
 
 z = 20
-print(z * x)
+print(z * x) #Умножение
