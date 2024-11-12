@@ -34,6 +34,12 @@ def check():
             t = 0
     window.after(10000, check) #Рекурсия, бесконечная функция
 
+
+def play_snd():
+    pygame.mixer.init()
+    pygame.mixer_music.load("reminder.mp3")
+    pygame.mixer.music.play()
+
 window = Tk()
 window.title("Напоминание")
 label = Label(text="Установите напоминание")
