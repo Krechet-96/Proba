@@ -5,12 +5,13 @@ import datetime
 import time
 import pygame
 
+
 t = 0
+
 
 def set():
     global t
-    rem = sd.askstring("Время напоминания",
-                       "Введите время напоминания в формате ЧЧ:ММ в 24 сасовом формате)")
+    rem = sd.askstring("Время напоминания","Введите время напоминания в формате ЧЧ:ММ в 24 сасовом формате)")
     if rem:
         try:
             hour = int(rem.split(":")[0])
@@ -23,6 +24,7 @@ def set():
             print(t)
         except Exception as e:
             mb.showerror("Ошибка!", f"Произошла ошибка {e}")
+            print(e)
 
 
 def check():
@@ -32,19 +34,23 @@ def check():
         if now >= t:
             play_snd()
             t = 0
-    window.after(10000, check) #Рекурсия, бесконечная функция
+    window.after(10000, check)
 
 
 def play_snd():
     pygame.mixer.init()
-    pygame.mixer_music.load("reminder.mp3")
+    pygame.mixer.music.load("reminder.mp3")
     pygame.mixer.music.play()
 
 window = Tk()
 window.title("Напоминание")
-label = Label(text="Установите напоминание")
+
+label = Label(text="Установите напоминание", font=("Arial", 14))
 label.pack(pady=10)
+
 set_button = Button(text="Установить напоминание", command=set)
-set_button.pack()
+set_button.pack(pady=10)
+
+check()
 
 window.mainloop()
